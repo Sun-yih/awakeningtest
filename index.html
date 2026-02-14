@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>觉醒阶段校准测试 · 新文明协议</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f5f3f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #2d2a27;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            padding: 40px 24px;
+        }
+        h1 { font-size: 32px; font-weight: 450; margin-bottom: 8px; color: #1e1b18; }
+        .subhead {
+            font-size: 16px; color: #6b5f55; margin-bottom: 40px;
+            border-left: 3px solid #c7b7a5; padding-left: 16px;
+        }
+        .section { margin-bottom: 36px; border-bottom: 1px solid #e8e0d8; padding-bottom: 24px; }
+        .q-title {
+            font-weight: 550; font-size: 18px; margin-bottom: 16px; color: #3f3a35;
+            display: flex; align-items: center;
+        }
+        .q-num {
+            background: #d9cdc0; color: #2d2a27; width: 24px; height: 24px;
+            border-radius: 40px; display: inline-flex; align-items: center;
+            justify-content: center; font-size: 14px; margin-right: 10px; font-weight: 500;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .option-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #faf9f7;
+            border-radius: 16px;
+            border: 1px solid #ece5de;
+            transition: background 0.15s;
+        }
+        .option-item:hover { background: #f4efe9; }
+        input[type="radio"] { margin-top: 4px; accent-color: #9b7f6b; width: 18px; height: 18px; flex-shrink: 0; }
+        .option-text { font-size: 16px; color: #2d2a27; }
+        .btn {
+            background: #2d2a27; color: white; border: none; border-radius: 40px;
+            padding: 16px 28px; font-size: 18px; font-weight: 500; width: 100%;
+            cursor: pointer; margin: 20px 0 30px; transition: background 0.2s;
+        }
+        .btn:hover { background: #1e1b18; }
+        .result-box {
+            background: #f0ebe6;
+            border-radius: 24px;
+            padding: 24px;
+            margin: 30px 0;
+            border-left: 6px solid #9b7f6b;
+        }
+        .result-title { font-size: 20px; font-weight: 550; margin-bottom: 16px; color: #2d2a27; }
+        .result-content {
+            font-size: 16px;
+            color: #3f3a35;
+            white-space: pre-line;
+            line-height: 1.8;
+        }
+        .invite-box {
+            background: #f9f6f2;
+            border-radius: 24px;
+            padding: 28px;
+            margin-top: 30px;
+            border: 1px dashed #c7b7a5;
+        }
+        .invite-title { font-size: 20px; font-weight: 550; margin-bottom: 20px; color: #2d2a27; }
+        .invite-content {
+            /* 移除背景、边框、等宽字体，改为普通文字区域 */
+            background: transparent;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            color: #3f3a35;
+        }
+        .invite-content p {
+            margin: 0 0 8px 0;
+        }
+        .invite-content strong {
+            font-weight: 600;
+            color: #2d2a27;
+        }
+        .invite-content .field-note {
+            font-size: 14px;
+            color: #6b5f55;
+            margin-left: 8px;
+            font-weight: normal;
+        }
+        .email-instruction {
+            background: #e8e0d8;
+            border-radius: 40px;
+            padding: 14px 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .email-instruction a {
+            color: #2d2a27;
+            text-decoration: underline;
+        }
+        .footer-note { font-size: 14px; color: #8b7f73; margin-top: 20px; text-align: center; }
+        hr { border: none; border-top: 1px solid #e8e0d8; margin: 30px 0 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>觉醒阶段校准测试</h1>
+    <div class="subhead">
+        四维坐标 · 看见你此刻在觉醒螺旋中的位置<br>
+        答案无对错，凭第一感觉选择。
+    </div>
+
+    <!-- 维度一：真实观 -->
+    <div class="section">
+        <div class="q-title"><span class="q-num">1</span> 关于“这个世界的真实性”，你更接近以下哪种感受？</div>
+        <div class="options" id="q1-group">
+            <label class="option-item"><input type="radio" name="q1" value="A"> <span class="option-text">世界是客观真实的——但我发现很多人用不真实的叙事操控它。</span></label>
+            <label class="option-item"><input type="radio" name="q1" value="B"> <span class="option-text">我开始怀疑“真实”可能不止一种——不同叙事建构不同现实。</span></label>
+            <label class="option-item"><input type="radio" name="q1" value="C"> <span class="option-text">我隐隐觉得，也许连“现实”这个概念本身也是被建构的。</span></label>
+            <label class="option-item"><input type="radio" name="q1" value="D"> <span class="option-text">我很少再思考“是否真实”这个问题——我更关注生命的自然流淌或内心涌现的能量。</span></label>
+        </div>
+    </div>
+
+    <!-- 维度二：行为倾向 -->
+    <div class="section">
+        <div class="q-title"><span class="q-num">2</span> 当你面对旧世界时，你的第一反应更倾向于？</div>
+        <div class="options" id="q2-group">
+            <label class="option-item"><input type="radio" name="q2" value="A"> <span class="option-text">承受或适应规则——让自己好过一些。</span></label>
+            <label class="option-item"><input type="radio" name="q2" value="B"> <span class="option-text">策略性地适应或利用规则——在缝隙里争取真实/价值空间。</span></label>
+            <label class="option-item"><input type="radio" name="q2" value="C"> <span class="option-text">批判问题，尝试揭露或改良这套规则。</span></label>
+            <label class="option-item"><input type="radio" name="q2" value="D"> <span class="option-text">先向内走，试图找到不被任何规则定义的自己。</span></label>
+            <label class="option-item"><input type="radio" name="q2" value="E"> <span class="option-text">有一股能量想做些什么，但还不确定具体是什么。</span></label>
+            <label class="option-item"><input type="radio" name="q2" value="F"> <span class="option-text">已经在创造自己的新规则/新游戏。</span></label>
+            <label class="option-item"><input type="radio" name="q2" value="G"> <span class="option-text">我早已不再以“旧世界有问题”为出发点——我只是平静地活着。</span></label>
+            <label class="option-item"><input type="radio" name="q2" value="H"> <span class="option-text">交替或不确定。</span></label>
+        </div>
+    </div>
+
+    <!-- 维度三：情绪状态（E在D前） -->
+    <div class="section">
+        <div class="q-title"><span class="q-num">3</span> 以下哪一项更接近你对旧世界的情绪状态？</div>
+        <div class="options" id="q3-group">
+            <label class="option-item"><input type="radio" name="q3" value="A"> <span class="option-text">愤怒——忍不住吐槽、批判，觉得它不可理喻。</span></label>
+            <label class="option-item"><input type="radio" name="q3" value="B"> <span class="option-text">失望/疏离——已经不愤怒了，更多的是无力、淡漠或保持距离。</span></label>
+            <label class="option-item"><input type="radio" name="q3" value="C"> <span class="option-text">无聊/忧郁/悲哀——连失望都谈不上，只是觉得那些游戏很无意义。</span></label>
+            <label class="option-item"><input type="radio" name="q3" value="E"> <span class="option-text">躁动/渴望——内心有股能量想要做些什么，对现有存在方式感到疲惫，但还未找到具体方向。</span></label>
+            <label class="option-item"><input type="radio" name="q3" value="D"> <span class="option-text">平静/一体性——旧世界已不再是参照系，我的能量安住于当下。</span></label>
+            <label class="option-item"><input type="radio" name="q3" value="F"> <span class="option-text">心流/一体性——方向明确，能量主要在创造中流动。</span></label>
+        </div>
+    </div>
+
+    <!-- 维度四：直觉信任度（保留但不输出） -->
+    <div class="section">
+        <div class="q-title"><span class="q-num">4</span> 你对内在“莫名知道”的直觉/感觉，持什么态度？</div>
+        <div class="options" id="q4-group">
+            <label class="option-item"><input type="radio" name="q4" value="A"> <span class="option-text">很少有直觉，即使有也忽略——更习惯依赖外部规则或已知做法。</span></label>
+            <label class="option-item"><input type="radio" name="q4" value="B"> <span class="option-text">偶尔有直觉，但不确定是不是错觉，常常纠结不行动。</span></label>
+            <label class="option-item"><input type="radio" name="q4" value="C"> <span class="option-text">经常有直觉，开始参考但还不作为主要依据。</span></label>
+            <label class="option-item"><input type="radio" name="q4" value="D"> <span class="option-text">直觉常常比思考更准确，越来越相信它，让它引导行动。</span></label>
+            <label class="option-item"><input type="radio" name="q4" value="E"> <span class="option-text">直觉与存在合一，不需要相信，只是自然流动。</span></label>
+        </div>
+    </div>
+
+    <button class="btn" id="generateBtn">查看我的觉醒坐标</button>
+
+    <!-- 结果展示区 -->
+    <div id="resultBox" class="result-box" style="display: none;">
+        <div class="result-title">📌 你的觉醒坐标</div>
+        <div class="result-content" id="resultText"></div>
+    </div>
+
+    <hr>
+    <div style="text-align: center; font-size: 14px; color: #a08e7a;">
+        新文明协议 · 奠基阶段 · 总建筑师 S
+    </div>
+</div>
+
+<script>
+    // 存储用户当前选项
+    let currentChoices = { q1: '', q2: '', q3: '', q4: '' };
+
+    // 阶段判定函数（完整版）
+    function getStageAndDesc(q1, q2, q3) {
+        let stage = '';
+        let desc = '';
+
+        if (q1 === 'A') {
+            if (q3 === 'A') {
+                if (q2 === 'A') {
+                    stage = '认知觉醒期·早期·适应型';
+                    desc = `你刚刚看清旧世界的荒诞，愤怒在心里烧，但行为上却只能忍着、适应着。你常常吐槽、批判，可第二天还是照常打卡、照常应付。你觉得自己像被夹在两层玻璃之间——看得见外面，却撞不出去。愤怒没有错，适应也没有错，只是这两股力量在你体内撕扯，让你疲惫又孤独。
+
+玻璃没碎，但你已经看见了外面的光。`;
+                } else if (q2 === 'C') {
+                    stage = '认知觉醒期·早期·批判型';
+                    desc = `你不仅愤怒，而且忍不住要说、要写、要争辩。你觉得自己必须揭露真相，必须让更多人看见。你可能是那个在群里发长文的人，是那个会议上忍不住反驳的人，是那个被朋友说“太较真”的人。你燃烧自己，试图照亮黑暗，但也常常感到疲惫：为什么只有我在喊？为什么他们听不见？
+
+你在喊，不是因为有人会听，是因为不喊你会憋死。`;
+                } else {
+                    stage = '认知觉醒期·早期';
+                    desc = '你刚刚看清旧世界的荒诞，愤怒是边界被侵犯的本能反应。你可能在适应、策略或批判中摇摆，但内心仍有火种。';
+                }
+            } else if (q3 === 'B') {
+                if (q2 === 'A') {
+                    stage = '认知觉醒期·早期·适应但疏离';
+                    desc = `你不再那么愤怒了，更多的是无力。你看着那些规则运转，看着别人投入其中，自己却像隔着一层雾。你还在适应，但心已经不太在里面。你有时会想：“就这样吧，反正也改变不了。”可偶尔夜深人静，又会有一丝不甘浮上来——这真的是我想要的生活吗？
+
+你还在适应，但心已经不在了。`;
+                } else if (q2 === 'B') {
+                    stage = '认知觉醒期·中期·策略型';
+                    desc = `你早已看清规则的荒诞，但你没有选择硬碰硬。你学会了在缝隙里为自己争取一点真实/价值空间——用规则的语言包装真实的想法，像潜伏者一样，在敌人的系统里偷偷保护自己的火种。
+
+你在别人的游戏里，玩自己的游戏。`;
+                } else if (q2 === 'C') {
+                    stage = '认知觉醒期·中期·批判型（失望期）';
+                    desc = `你曾经奋力批判，但现在有些累了。你发现揭露真相并不能改变什么，那些该装睡的人还是装睡。你开始失望，开始怀疑自己的努力是否有意义。你仍然会偶尔发声，但已经不那么用力了。你觉得自己像对着空谷喊话的人，连回声都听不到。`;
+                } else {
+                    stage = '认知觉醒期·中期';
+                    desc = '愤怒已褪去，你开始疏离，能量正在从外部收回。这是灵性觉醒前的准备期。';
+                }
+            } else if (q3 === 'C') {
+                if (q2 === 'B') {
+                    stage = '认知觉醒期·晚期·侦察兵型';
+                    desc = `你不感到愤怒，甚至连失望都谈不上。那些别人热衷的游戏，你只是远远看着，偶尔觉得无聊，偶尔感到一种淡淡的悲哀。你比周围的人都更早地看到了终局，但你还没有找到自己的下一局。
+
+你站在门口很久了，门还没开，但风已经从门缝里钻了进来。`;
+                } else if (q2 === 'D') {
+                    stage = '认知觉醒期·晚期·向内转向中';
+                    desc = `你不再那么关注外界的规则了，开始把目光转向自己。你问自己：“抛开所有角色，我到底是谁？”开始剥掉那些被定义的壳，想看看里面还有什么。
+
+你正在剥自己，还不知道里面是什么。但你知道，那是值得剥的。`;
+                } else {
+                    stage = '认知觉醒期·晚期';
+                    desc = '你的情绪早已离场，但认知还在旧框架里。你是典型的“情绪领先型”觉醒者——你比自己意识到的更早抵达门口。';
+                }
+            } else {
+                stage = '认知觉醒期';
+                desc = '你处于认知觉醒阶段，情绪和行为组合较为独特，建议结合自己的感受继续观察。';
+            }
+        } else {
+            if (q2 === 'G' && q3 === 'D') {
+                stage = '灵性觉醒期·圆满型';
+                desc = `你已安住于源头，不需要使命。你平静地活着，与世界没有对抗，也没有渴求。你像一棵树，只是站着，为路过的人提供一片阴凉。新文明需要建造者，也需要安住者。你的存在本身就是这片土地最深沉的根基。`;
+            } else if ( (q2 === 'E' && (q3 === 'E' || q3 === 'C')) || (q2 === 'D' && q3 === 'E') ) {
+                stage = '灵性觉醒期·能量涌动型';
+                let extra = (q2 === 'D') ? '你在向内走，但内心并不平静，反而涌动着躁动与渴望。' : '';
+                desc = `你感受到一股真实的能量想要流动、想要创造，但还不知道具体该做什么。你处在一种奇特的混合状态中——既有对现有存在方式的疲惫，又有一种渴望燃烧的躁动。${extra}
+
+你身体里有一团火，但还不知道要烧向哪里。`;
+            } else if (q3 === 'D' && q2 === 'E') {
+                stage = '灵性觉醒期·使命萌动型';
+                desc = `你已经在平静中感受到了创造的召唤。方向可能仍然模糊，但你不再像能量涌动期那样躁动，而是开始以一种更沉稳的方式探索。你可能会尝试一些与内在方向相关的小事，或者开始关注某个特定领域。你隐约知道自己该往哪个方向走，但还无法清晰描述。
+
+你还没看见路，但你已经闻到了泥土的味道。`;
+            } else if (q2 === 'B' && q3 === 'D') {
+                stage = '灵性觉醒期·蛰伏型';
+                desc = `你内在已经觉醒，但外在仍然选择在缝隙中生存。你不再愤怒，也不再批判，只是平静地做着自己的事，偶尔利用规则为自己争取一点空间。你像一个隐居者在闹市——人来人往，你知道他们都在游戏里，而你只是静静地看着。
+
+你在人群里，但人群不在你心里。`;
+            } else if (q2 === 'D' && q3 === 'D') {
+                stage = '灵性觉醒期·向内整合中';
+                desc = `你已经不再纠结世界的真假，开始享受向内走的宁静。你越来越能感受到一种不被外界定义的自己——它不需要角色，不需要成就，只是存在着。你开始体验“一体性”的片刻，虽然还不稳定。
+
+你沉下去了，上面是水面的光。`;
+            } else if (q1 === 'B' && (q3 === 'A' || q3 === 'B') && (q2 === 'A' || q2 === 'C' || q2 === 'H')) {
+                stage = '灵性觉醒期·入口（认知先行）';
+                desc = `你的认知已经跨过“唯一真实”的门槛，开始意识到现实可以被不同叙事建构。但你的情绪和行为还在旧模式里——你可能仍然会愤怒、批判或适应。认知有时走得快，情绪和身体需要时间跟上。
+
+你已经醒了，但身体还在赖床。`;
+            } else if (q1 === 'B' && q3 === 'D' && (q2 === 'A' || q2 === 'B')) {
+                stage = '灵性觉醒期·入口（行为滞后）';
+                desc = `你的认知和情绪都已经进入了灵性觉醒的状态——你不再纠结真实，内心平静。但外在行为上，你仍然延续着旧世界的适应或策略。身体的惯性比意识慢。
+
+你知道门在哪里，只是还没走过去。`;
+            } else if (q2 === 'F' && q3 === 'F') {
+                stage = '使命/创造觉醒期';
+                desc = `你已经走在自己的创造之路上，心流逐渐成为常态。你知道自己在创造什么，虽然过程仍有起伏，但不会再怀疑“这是不是我的路”。
+
+你不再问“是不是这条路”，因为你已经在走了。`;
+            } else {
+                stage = '灵性觉醒期·整合中';
+                desc = '你的认知已经超越了旧世界的真实观，但情绪和行为还在整合的过程中。你正在从不同层面调整自己，有时会感到不一致，这是正常的。新旧程序交替需要时间，你在螺旋上升的路上。';
+            }
+        }
+        return { stage, desc };
+    }
+
+    // 生成结果并附加手动发送指引
+    function generateFullResult(q1, q2, q3, q4) {
+        const { stage, desc } = getStageAndDesc(q1, q2, q3);
+        let result = `【主要阶段】${stage}\n\n${desc}\n`;
+
+        // 邮箱地址
+        const yourEmail = '455295771@qq.com';
+
+        // 根据阶段添加不同的邀请文案
+        if (stage.includes('能量涌动型') || stage.includes('使命萌动型')) {
+            // 实验室报名邮件模板（使用更清晰的格式）
+            const template = 
+`请将以下信息复制后发送邮件至 ${yourEmail}，邮件主题为：共同探索实验室报名
+
+姓名【             】鼓励真名，在新世界，我们不再需要戴上面具——在共同探索实验室，我会用我的真名
+邮箱【             】我将在第六章发布后的一周内给候选人发送探索说明的确认邮件
+MBTI【             】它是你的天赋密码
+
+测试选项：q1=${q1} q2=${q2} q3=${q3} q4=${q4}
+阶段：${stage}`;
+            const mailtoLink = `mailto:${yourEmail}?subject=共同探索实验室报名&body=${encodeURIComponent(template)}`;
+
+            result += `\n---\n`;
+            result += `<div class="invite-box">`;
+            result += `<div class="invite-title">🕊️ 共同探索实验室 · 邀请</div>`;
+            result += `<p>你正是我要寻找的人。如果你感受到了召唤——</p>`;
+            // 使用普通文字展示邮件模板，不再用代码块背景
+            result += `<div class="invite-content">${template.replace(/\n/g, '<br>')}</div>`;
+            result += `<p class="email-instruction">📧 点击 <a href="${mailtoLink}">这里</a> 直接发送邮件（请补充括号内的信息）</p>`;
+            result += `</div>`;
+        } else if (stage.includes('使命/创造觉醒期')) {
+            // 联系通道邮件模板（姓名说明去掉句号）
+            const template = 
+`请将以下信息复制后发送邮件至 ${yourEmail}，邮件主题为：使命/创造觉醒联系
+
+姓名【             】在这里，我们可以用真名相见
+使命【             】简要描述你的使命方向
+邮箱【             】我将在我们的能量需要交汇时联系你
+留言【             】如果你有想与我说的话，可以写在这里
+
+测试选项：q1=${q1} q2=${q2} q3=${q3} q4=${q4}
+阶段：${stage}`;
+            const mailtoLink = `mailto:${yourEmail}?subject=使命/创造觉醒联系&body=${encodeURIComponent(template)}`;
+
+            result += `\n---\n`;
+            result += `<div class="invite-box">`;
+            result += `<div class="invite-title">🌱 联系通道</div>`;
+            result += `<p>如果你想与我建立联系通道，或考虑在未来阶段加入我们——</p>`;
+            result += `<div class="invite-content">${template.replace(/\n/g, '<br>')}</div>`;
+            result += `<p class="email-instruction">📧 点击 <a href="${mailtoLink}">这里</a> 直接发送邮件（请补充括号内的信息）</p>`;
+            result += `</div>`;
+        }
+
+        return result;
+    }
+
+    // 绑定生成按钮
+    document.getElementById('generateBtn').addEventListener('click', function() {
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        const q2 = document.querySelector('input[name="q2"]:checked');
+        const q3 = document.querySelector('input[name="q3"]:checked');
+        const q4 = document.querySelector('input[name="q4"]:checked');
+
+        if (!q1 || !q2 || !q3 || !q4) {
+            alert('请完成所有问题后再查看结果。');
+            return;
+        }
+
+        // 保存选项
+        currentChoices = {
+            q1: q1.value,
+            q2: q2.value,
+            q3: q3.value,
+            q4: q4.value
+        };
+
+        const resultHTML = generateFullResult(q1.value, q2.value, q3.value, q4.value);
+        const resultBox = document.getElementById('resultBox');
+        resultBox.style.display = 'block';
+        document.getElementById('resultText').innerHTML = resultHTML.replace(/\n/g, '<br>');
+
+        resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+</script>
+</body>
+</html>
